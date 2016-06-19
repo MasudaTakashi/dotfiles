@@ -59,3 +59,50 @@ highlight CursorLine ctermfg=Blue
 
 " autocmplpop.vim関連
 setlocal omnifunc=syntaxcomplete#Complete
+
+"---------------------------------------------------------------------------
+" キーバインド:
+"vimrcをスペースドットで開く
+nnoremap <space>. :<c-u>tabedit $MYVIMRC<CR>
+" 入力モード中に素早くjjと入力した場合はESCとみなす
+inoremap jj <Esc>
+
+"---------------------------------------------------------------------------
+" for NeoBundle:
+if has('vim_starting')
+  "set nocompatible               " Be iMproved
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+ NeoBundleFetch 'Shougo/neobundle.vim'
+
+ NeoBundle 'Shougo/vimproc'
+ NeoBundle 'Shougo/unite.vim'
+
+if has('lua') && v:version >= 703
+    NeoBundleLazy 'Shougo/neocomplete.vim'
+else
+    NeoBundleLazy 'Shougo/neocomplcache.vim'
+endif
+
+" Japanese help
+NeoBundle 'vim-jp/vimdoc-ja'
+" Vital
+NeoBundle 'vim-jp/vital.vim'
+
+" Colorschemes
+NeoBundle 'b4b4r07/solarized.vim', { "base" : $HOME."/.vim/colors" }
+NeoBundle 'nanotech/jellybeans.vim', { "base" : $HOME."/.vim/colors" }
+NeoBundle 'tomasr/molokai', { "base" : $HOME."/.vim/colors" }
+NeoBundle 'w0ng/vim-hybrid', { "base" : $HOME."/.vim/colors" }
+
+call neobundle#end()
+
+" ファイルタイプ別のプラグイン/インデントを有効にする
+filetype plugin indent on
+
+" Check.
+NeoBundleCheck
