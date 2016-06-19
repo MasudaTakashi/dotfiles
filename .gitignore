@@ -1,3 +1,7 @@
 .DS_Store
 *~
 .zsh_history
+
+# vim NeoBundle
+.vim/bundle/
+.vim/colors/
