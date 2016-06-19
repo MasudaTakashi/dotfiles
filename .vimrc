@@ -98,7 +98,8 @@ set notitle
 set cursorline
 highlight CursorLine ctermbg=LightGrey
 highlight CursorLine ctermfg=Blue
-
+" fzf
+set rtp+=~/.fzf
 
 " autocmplpop.vim関連
 "setlocal omnifunc=syntaxcomplete#Complete
