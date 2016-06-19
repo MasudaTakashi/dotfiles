@@ -336,3 +336,71 @@ is_number() {
 }
 alias is_int=is_number
 alias is_num=is_number
+
+# echon is a script to emulate the -n flag functionality with 'echo'
+# for Unix systems that don't have that available.
+echon() {
+    echo "$*" | tr -d '\n'
+}
+
+# noecho is the same as echon
+noecho() {
+    if [ "$(echo -n)" = "-n" ]; then
+        echo "${*:-> }\c"
+    else
+        echo -n "${@:-> }"
+    fi
+}
+
+# lower returns a copy of the string with all letters mapped to their lower case.
+# shellcheck disable=SC2120
+lower() {
+    if [ $# -eq 0 ]; then
+        cat <&0
+    elif [ $# -eq 1 ]; then
+        if [ -f "$1" -a -r "$1" ]; then
+            cat "$1"
+        else
+            echo "$1"
+        fi
+    else
+        return 1
+    fi | tr "[:upper:]" "[:lower:]"
+}
+
+# upper returns a copy of the string with all letters mapped to their upper case.
+# shellcheck disable=SC2120
+upper() {
+    if [ $# -eq 0 ]; then
+        cat <&0
+    elif [ $# -eq 1 ]; then
+        if [ -f "$1" -a -r "$1" ]; then
+            cat "$1"
+        else
+            echo "$1"
+        fi
+    else
+        return 1
+    fi | tr "[:lower:]" "[:upper:]"
+}
+
+# contains returns true if the specified string contains
+# the specified substring, otherwise returns false
+# http://stackoverflow.com/questions/2829613/how-do-you-tell-if-a-string-contains-another-string-in-unix-shell-scripting
+contains() {
+    string="$1"
+    substring="$2"
+    if [ "${string#*$substring}" != "$string" ]; then
+        return 0    # $substring is in $string
+    else
+        return 1    # $substring is not in $string
+    fi
+}
+
+# len returns the length of $1
+len() {
+    local length
+    length="$(echo "$1" | wc -c | sed -e 's/ *//')"
+    #echo "$(expr "$length" - 1)"
+    echo $(("$length" - 1))
+}
