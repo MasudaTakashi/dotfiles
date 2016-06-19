@@ -4,16 +4,15 @@
 trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
-# Load vital library that is most important and
-# constructed with many minimal functions
-# For more information, see etc/README.md
-. "$DOTPATH"/etc/lib/vital.sh
+# Load common libray
+. "$DOTPATH"/etc/scripts/common.sh
 
 # If you don't have git or don't find git preserved
 # in a directory with the path,
 # to install it after the platforms are detected
-if ! has "git"; then
-
+if has "git"; then
+    log_pass "git: already installed"
+else
     # Install git
     case "$(get_os)" in
         # Case of OS X
@@ -50,6 +49,6 @@ if ! has "git"; then
             exit 1
             ;;
     esac
-fi
 
-log_pass "git: installed successfully"
+    log_pass "git: installed successfully"
+fi

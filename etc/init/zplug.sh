@@ -1,27 +1,28 @@
 #!/bin/bash
 
-if [[ ! -f ~/.zplug/init.zsh ]]; then
-    if (( ! $+commands[git] )); then
-        echo "git: command not found" >&2
+# Load common libray
+. "$DOTPATH"/etc/scripts/common.sh
+
+if [[ -f ~/.zplug/init.zsh ]]; then
+    log_pass "zplug: already installed"
+else
+    if ! has "git"; then
+        log_fail "git: command not found" >&2
         exit 1
     fi
 
     git clone \
         https://github.com/zplug/zplug \
         ~/.zplug
-
-    # failed
-    if (( $status != 0 )); then
-        echo "zplug: fails to installation of zplug" >&2
-    fi
 fi
 
 if [[ -f ~/.zplug/init.zsh ]]; then
-    echo "zplug: not found" >&2
-    exit 1
+    # load zplug
+    source ~/.zplug/init.zsh
+    log_pass "zplug: installed successfully"
+else
+    log_fail "zplug: fails to installation of zplug"
 fi
-# load zplug
-source ~/.zplug/init.zsh
 
 if [[ -f $DOTPATH/.zsh/zplug.zsh ]]; then
     export ZPLUG_LOADFILE="$DOTPATH/.zsh/zplug.zsh"
