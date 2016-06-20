@@ -27,7 +27,7 @@ NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'vim-jp/vital.vim'
 
 " Colorschemes
-NeoBundle 'b4b4r07/solarized.vim', { "base" : $HOME."/.vim/colors" }
+NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'nanotech/jellybeans.vim', { "base" : $HOME."/.vim/colors" }
 NeoBundle 'tomasr/molokai', { "base" : $HOME."/.vim/colors" }
 NeoBundle 'w0ng/vim-hybrid', { "base" : $HOME."/.vim/colors" }
@@ -90,14 +90,15 @@ set wrap
 set laststatus=2
 " コマンドラインの高さ (Windows用gvim使用時はgvimrcを編集すること)
 set cmdheight=2
-" コマンドをステータス行に表
+" コマンドをステータス行に表示
 set showcmd
 " タイトルバーの表示を消す
 set notitle
 " カーソル
+"highlight CursorLineNr ctermbg=4 ctermfg=White
 set cursorline
-highlight CursorLine ctermbg=LightGrey
-highlight CursorLine ctermfg=Blue
+"highlight clear CursorLine
+highlight CursorLine ctermbg=4 ctermfg=White cterm=None term=reverse
 " fzf
 set rtp+=~/.fzf
 
