@@ -3,9 +3,6 @@
 # Load common libray
 . "$DOTPATH"/etc/scripts/common.sh
 
-# tmux_automatically_attach attachs tmux session automatically
-is_ssh_running && exit
-
 if is_screen_or_tmux_running; then
     ! is_exists 'tmux' && return 1
 
