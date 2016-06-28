@@ -23,4 +23,4 @@ linux*)
 esac
 
 # 念のためrmではゴミ箱への移動のみ
-alias mv="gmv -f --backup=numbered --target-directory ~/.Trash"
+alias rm="gmv -f --backup=numbered --target-directory ~/.Trash"
