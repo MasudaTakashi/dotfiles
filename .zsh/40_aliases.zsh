@@ -2,7 +2,13 @@
 # Aliases
 # ------------------------------
 
-alias vi='vim'
+# Load common libray
+. "$DOTPATH"/etc/scripts/common.sh
+
+if has "vim"; then
+    alias vi='vim'
+fi
+
 #時刻を表示させる
 alias history='history -E'
 
@@ -23,4 +29,6 @@ linux*)
 esac
 
 # 念のためrmではゴミ箱への移動のみ
-alias rm="gmv -f --backup=numbered --target-directory ~/.Trash"
+if has "gmv"; then
+    alias rm="gmv -f --backup=numbered --target-directory ~/.Trash"
+fi
