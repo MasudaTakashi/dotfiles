@@ -14,15 +14,15 @@ else
     git clone \
         https://github.com/zplug/zplug \
         ~/.zplug
+    log_pass "zplug: installed successfully"
 fi
 
-if [[ -f ~/.zplug/init.zsh ]]; then
-    # load zplug
-    source ~/.zplug/init.zsh
-    log_pass "zplug: installed successfully"
-else
-    log_fail "zplug: fails to installation of zplug"
+if [[ ! -f ~/.zplug/init.zsh ]]; then
+    echo "zplug: not found" >&2
+    exit 1
 fi
+# load zplug
+source ~/.zplug/init.zsh
 
 if [[ -f $DOTPATH/.zsh/zplug.zsh ]]; then
     export ZPLUG_LOADFILE="$DOTPATH/.zsh/zplug.zsh"
