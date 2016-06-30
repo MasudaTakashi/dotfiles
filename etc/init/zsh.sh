@@ -10,8 +10,9 @@ set -eu
 # If you don't have Z shell or don't find zsh preserved
 # in a directory with the path,
 # to install it after the platforms are detected
-if ! has "zsh"; then
-
+if has "zsh"; then
+    log_pass "zsh: already installed"
+else
     # Install zsh
     case "$(get_os)" in
         # Case of OS X
