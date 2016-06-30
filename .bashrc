@@ -36,3 +36,5 @@ export PATH=$PATH:$SRILM/bin:$SRILM/bin/macosx
 export MANPATH=$MANPATH:$SRILM/man
 # 自分のディレクトリにインストールしたもの
 export PATH=$PATH:$HOME/usr/local/bin
+
+eval "$(rbenv init -)"
