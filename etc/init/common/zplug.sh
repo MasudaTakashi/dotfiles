@@ -30,7 +30,8 @@ fi
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
-    if read -q; then
+    read
+    if [[ "$REPLY" =~ ^[Yy]$ ]]; then
         echo; zplug install
     else
         echo

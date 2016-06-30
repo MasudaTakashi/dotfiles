@@ -25,7 +25,7 @@ if has "brew"; then
     fi
     echo -n "brew bundle? (y/N) "
     read
-    if [[ "$REPLY" =~ ^[Yy]$ ]] || [[ "$REPLY" == '' ]]; then
+    if [[ "$REPLY" =~ ^[Yy]$ ]]; then
         brew bundle
     fi
 else
