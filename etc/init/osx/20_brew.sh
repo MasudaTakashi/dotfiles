@@ -23,8 +23,11 @@ if has "brew"; then
     if [ ! -f Brewfile ]; then
         brew bundle dump
     fi
-
-    brew bundle
+    echo -n "brew bundle? (y/N) "
+    read
+    if [[ "$REPLY" =~ ^[Yy]$ ]] || [[ "$REPLY" == '' ]]; then
+        brew bundle
+    fi
 else
     log_fail "error: require: brew"
     exit 1
