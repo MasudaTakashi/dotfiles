@@ -21,8 +21,9 @@ if [[ ! -f ~/.zplug/init.zsh ]]; then
     echo "zplug: not found" >&2
     exit 1
 fi
+<< COMMENTOUT
 # load zplug
-source ~/.zplug/init.zsh
+. ~/.zplug/init.zsh
 
 if [[ -f $DOTPATH/.zsh/zplug.zsh ]]; then
     export ZPLUG_LOADFILE="$DOTPATH/.zsh/zplug.zsh"
@@ -38,3 +39,5 @@ if ! zplug check --verbose; then
     fi
 fi
 zplug load --verbose
+COMMENTOUT
+
