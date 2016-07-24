@@ -31,7 +31,8 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'nanotech/jellybeans.vim', { "base" : $HOME."/.vim/colors" }
 NeoBundle 'tomasr/molokai', { "base" : $HOME."/.vim/colors" }
 NeoBundle 'w0ng/vim-hybrid', { "base" : $HOME."/.vim/colors" }
-
+" lightline
+NeoBundle 'itchyny/lightline.vim'
 
 call neobundle#end()
 filetype plugin indent on
@@ -75,6 +76,10 @@ set nobackup
 syntax enable
 set background=dark
 colorscheme solarized
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'solarized'
+      \ }
 " 行番号を非表示 (number:表示)
 set number
 " ルーラーを表示 (noruler:非表示)
