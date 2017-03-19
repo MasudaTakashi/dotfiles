@@ -12,6 +12,8 @@ done
 # ------------------------------
 # Load common libray
 . "$DOTPATH"/etc/scripts/common.sh
+# slack notify
+. "$DOTPATH"/etc/scripts/slack_notify.sh
 
 # ------------------------------
 # tmux自動起動
