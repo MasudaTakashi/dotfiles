@@ -1,4 +1,9 @@
 # ------------------------------
+# 準備
+# ------------------------------
+autoload -Uz add-zsh-hook
+
+# ------------------------------
 # .zshの読み込み
 # ------------------------------
 for f in ~/.zsh/[0-9]*.(sh|zsh)
@@ -14,6 +19,7 @@ done
 . "$DOTPATH"/etc/scripts/common.sh
 # slack notify
 . "$DOTPATH"/etc/scripts/slack_notify.sh
+
 
 # ------------------------------
 # tmux自動起動

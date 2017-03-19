@@ -13,12 +13,13 @@ function notify_preexec {
 
 function notify_precmd {
   notif_status=$?
-  if [ -n "${SLACK_WEBHOOK_URL+x}" ] && [ -n "${SLACK_USER_NAME+x}" ] && [ $TTYIDLE -gt ${SLACK_NOTIF_THRESHOLD:-180} ] && [ $notif_status -ne 130 ] && [ $notif_status -ne 146 ]; then
+  if [ -n "${SLACK_WEBHOOK_URL+x}" ] && [ -n "${SLACK_USER_NAME+x}" ] && [ $TTYIDLE -gt ${SLACK_NOTIF_THRESHOLD:-60} ] && [ $notif_status -ne 130 ] && [ $notif_status -ne 146 ]; then
     notif_title=$([ $notif_status -eq 0 ] && echo "Command succeeded :ok_woman:" || echo "Command failed :no_good:")
     notif_color=$([ $notif_status -eq 0 ] && echo "good" || echo "danger")
     notif_icon=$([ $notif_status -eq 0 ] && echo ":angel:" || echo ":smiling_imp:")
     payload=`cat << EOS
 {
+  "channel": ${SLACK_CHANNEL:-"#general"},
   "username": "command result",
   "icon_emoji": "$notif_icon",
   "text": "<@$SLACK_USER_NAME>",
