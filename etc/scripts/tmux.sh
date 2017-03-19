@@ -7,6 +7,7 @@ if is_screen_or_tmux_running; then
     ! is_exists 'tmux' && return 1
 
     if is_tmux_runnning; then
+        echo ${fg_bold[red]} tmux running ... ${reset_color}
         #echo "${fg_bold[red]} _____ __  __ _   ___  __ ${reset_color}"
         #echo "${fg_bold[red]}|_   _|  \/  | | | \ \/ / ${reset_color}"
         #echo "${fg_bold[red]}  | | | |\/| | | | |\  /  ${reset_color}"
