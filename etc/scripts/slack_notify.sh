@@ -20,9 +20,10 @@ function notify_precmd {
     notif_title=$([ $notif_status -eq 0 ] && echo "Command succeeded :ok_woman:" || echo "Command failed :no_good:")
     notif_color=$([ $notif_status -eq 0 ] && echo "good" || echo "danger")
     notif_icon=$([ $notif_status -eq 0 ] && echo ":angel:" || echo ":smiling_imp:")
+    channel=${SLACK_CHANNEL:-"#general"}
     payload=`cat << EOS
 {
-  "channel": ${SLACK_CHANNEL:-"#general"},
+  "channel": "$channel",
   "username": "command result",
   "icon_emoji": "$notif_icon",
   "text": "<@$SLACK_USER_NAME>",
