@@ -1,9 +1,12 @@
+# Load common script
+. "$DOTPATH"/etc/scripts/common.sh
+
 if [ -z "${SLACK_WEBHOOK_URL+x}" ]; then
-  echo "SLACK_WEBHOOK_URL is empty !!!"
+  log_fail "\$SLACK_WEBHOOK_URL is empty."
 fi
 
 if [ -z "${SLACK_USER_NAME+x}" ]; then
-  echo "SLACK_USER_NAME is empty !!!"
+  log_fail "\$SLACK_USER_NAME is empty."
 fi
 
 function notify_preexec {
