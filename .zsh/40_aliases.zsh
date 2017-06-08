@@ -32,3 +32,4 @@ esac
 if has "gmv"; then
     alias rm="gmv -f --backup=numbered --target-directory ~/.Trash"
 fi
+
